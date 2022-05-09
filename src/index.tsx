@@ -1,10 +1,12 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { ThemeProvider } from "styled-components";
 import { createGlobalStyle } from "styled-components";
 import App from "./App";
+import { theme } from "./theme";
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -34,9 +36,6 @@ footer, header, hgroup, main, menu, nav, section {
 *[hidden] {
     display: none;
 }
-body {
-  line-height: 1;
-}
 menu, ol, ul {
   list-style: none;
 }
@@ -54,7 +53,7 @@ table {
 }
 * {
   box-sizing: border-box;
-  /* font-family: 'Source Sans Pro', sans-serif; */
+  font-family: 'Roboto', 'sans-serif';
 }
 
 a {
@@ -64,12 +63,26 @@ a {
 
 a {color: #fff; text-decoration: none; outline: none}
 a:hover, a:active {text-decoration: none; color:#fff; background-color:unse;}
+
+body {
+  line-height: 1;
+  background: ${(props) => props.theme.colors.bgColor};
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 `;
 
 ReactDOM.render(
   <React.StrictMode>
-    <GlobalStyle />
-    <App />
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <App />
+    </ThemeProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
