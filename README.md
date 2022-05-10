@@ -1,6 +1,6 @@
-# Netflex Clone Coding        
+# React example_1
 
-학습용 리액트 프로젝트    
-넷플릭스를 클론코딩하는 프로젝트입니다.     
+유투브에서 보인 React 사이트 만들어봄  
+https://www.youtube.com/watch?v=K7vHoUwClaM&list=PLYKhrK6zKulS8zWDGBUqJuAHYQFSo1ONo&index=5&t=142s
 
 <hr />
