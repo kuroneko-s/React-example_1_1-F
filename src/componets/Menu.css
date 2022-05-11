@@ -1,0 +1,7 @@
+.active {
+  /* 클릭일 경우 활성화 시킬 */
+  border-left: rgba(253, 121, 168, 0.7) solid 8px;
+  background-color: rgba(253, 121, 168, 0.2);
+  border-start-end-radius: 15px;
+  border-end-end-radius: 15px;
+}

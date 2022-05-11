@@ -9,6 +9,11 @@ declare module "styled-components" {
       innerBgColor: string;
       pointColor: string;
       pointColorOpacity: string;
+      charts: {
+        first: string;
+        second: string;
+        third: string;
+      };
     };
   }
 }
