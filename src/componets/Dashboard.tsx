@@ -116,9 +116,9 @@ const OrderTitle = styled.h1`
   margin-bottom: 20px;
 `;
 
-const BiggerChart = styled(motion.div)`
+const BiggerChart = styled(motion.div)<{ bgColor: string }>`
   position: fixed;
-  background-color: red;
+  background-color: ${(props) => props.bgColor};
   width: 720px;
   height: 480px;
   top: calc(50% - 240px);
@@ -137,6 +137,7 @@ function getTime(createTime: number) {
 
 function Dashboard() {
   const [selected, setSelected] = useState<number>(-1);
+  const colors = ["#e62ae6", "#f07c59", "#f8c844"];
 
   return (
     <Container>
@@ -221,9 +222,34 @@ function Dashboard() {
           initial={{ opacity: 0, zIndex: -1 }}
           animate={{ opacity: 1, zIndex: 2 }}
           layoutId={selected + ""}
+          bgColor={colors[selected]}
         >
-          chart
-          <p onClick={() => setSelected(-1)}>X</p>
+          <p style={{ textAlign: "center" }} onClick={() => setSelected(-1)}>
+            X
+          </p>
+          <ReactApexChart
+            options={{
+              dataLabels: {
+                enabled: false,
+              },
+              stroke: {
+                curve: "smooth",
+              },
+              tooltip: {
+                x: {
+                  format: "dd/MM/yy HH:mm",
+                },
+              },
+            }}
+            series={[
+              {
+                name: CardsData[selected].series[0].name,
+                data: CardsData[selected].series[0].data,
+              },
+            ]}
+            type="area"
+            height={460}
+          />
         </BiggerChart>
       )}
     </Container>
